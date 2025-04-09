@@ -184,3 +184,194 @@ const obj = JSON.parse('{"name":"Alice","age":26}');
 - Use JSON methods to convert objects to and from strings.
 
 Objects are fundamental in JavaScript and are used everywhere in real-world applications.
+
+# JavaScript String Guide
+
+Strings in JavaScript are used to represent textual data. They are **immutable**, meaning once a string is created, it cannot be changed — any string manipulation returns a new string.
+
+---
+
+## 📘 String Creation
+
+```js
+let str1 = "Hello";
+let str2 = "World";
+let str3 = `Hello, ${str2}!`; // Template literal
+```
+
+---
+
+## 🧠 String Characteristics
+
+- Strings are **primitive types**.
+- They are **immutable**.
+- Strings can be created with quotes (`'`, `"`, or `` ` ``).
+- Template literals (`` ` ``) allow **interpolation** and multiline strings.
+
+---
+
+## 🔧 Common String Methods
+
+### 1. **Length**
+
+```js
+str.length; // Number of characters
+```
+
+### 2. **charAt(index)**
+
+```js
+str.charAt(0); // Character at index
+```
+
+### 3. **indexOf(substring)** / **lastIndexOf(substring)**
+
+```js
+str.indexOf("lo");
+str.lastIndexOf("o");
+```
+
+### 4. **includes(substring)**
+
+```js
+str.includes("Hello"); // true/false
+```
+
+### 5. **startsWith(prefix)** / **endsWith(suffix)**
+
+```js
+str.startsWith("He");
+str.endsWith("ld");
+```
+
+### 6. **slice(start, end?)**
+
+```js
+str.slice(0, 5); // Extract substring
+```
+
+### 7. **substring(start, end)**
+
+```js
+str.substring(0, 5); // Similar to slice, no negative index
+```
+
+### 8. **substr(start, length)** _(deprecated)_
+
+```js
+str.substr(0, 5); // Start at 0, get 5 chars
+```
+
+### 9. **toUpperCase() / toLowerCase()**
+
+```js
+str.toUpperCase();
+str.toLowerCase();
+```
+
+### 10. **trim() / trimStart() / trimEnd()**
+
+```js
+str.trim(); // Remove whitespace
+```
+
+### 11. **replace(search, replace)** / **replaceAll(search, replace)**
+
+```js
+str.replace("l", "x");
+str.replaceAll("l", "x");
+```
+
+### 12. **split(delimiter)**
+
+```js
+str.split(","); // Convert to array
+```
+
+### 13. **repeat(count)**
+
+```js
+"ha".repeat(3); // "hahaha"
+```
+
+### 14. **padStart(length, padStr)** / **padEnd(length, padStr)**
+
+```js
+"5".padStart(2, "0"); // "05"
+```
+
+### 15. **concat(...strings)**
+
+```js
+str.concat(" ", "World");
+```
+
+### 16. **match(regex)** / **matchAll(regex)**
+
+```js
+str.match(/l/g); // Returns array of matches
+```
+
+### 17. **search(regex)**
+
+```js
+str.search(/l/); // Returns index of match
+```
+
+### 18. **localeCompare(otherString)**
+
+```js
+"a".localeCompare("b"); // -1, 0, or 1
+```
+
+### 19. **normalize()**
+
+```js
+str.normalize(); // Unicode normalization
+```
+
+---
+
+## 🧪 String Immutability Example
+
+```js
+let str = "hello";
+str[0] = "H"; // ❌ Won’t work
+str = "H" + str.slice(1); // ✅
+```
+
+---
+
+## 🔁 Looping Through a String
+
+```js
+for (let char of str) {
+  console.log(char);
+}
+```
+
+---
+
+## 🛠 Advanced String Tricks
+
+### Reverse a String
+
+```js
+str.split("").reverse().join("");
+```
+
+### Count Occurrences
+
+```js
+str.split("l").length - 1;
+```
+
+---
+
+## 📌 Summary
+
+- Strings are immutable.
+- They support powerful built-in methods.
+- Template literals make string manipulation more readable.
+
+Use these methods to manipulate and handle text effectively in JavaScript!

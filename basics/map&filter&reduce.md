@@ -1,8 +1,8 @@
-# JavaScript Array Methods: map, filter, reduce
+# JavaScript Array Methods: map, filter, reduce, flat, flatMap, Array.from, slice, splice, forEach, some, every
 
 ## Introduction
 
-JavaScript arrays come with powerful built-in methods for processing data. The most commonly used methods are `map`, `filter`, and `reduce`. These methods help you work with arrays in a functional and readable way.
+JavaScript arrays come with powerful built-in methods for processing data. The most commonly used methods are `map`, `filter`, and `reduce`. Additionally, methods like `flat`, `flatMap`, `Array.from`, `slice`, `splice`, `forEach`, `some`, and `every` offer flexible tools to manipulate and evaluate arrays.
 
 ---
 
@@ -28,22 +28,6 @@ const squared = nums.map((n) => n * n);
 console.log(squared); // [1, 4, 9]
 ```
 
-### Return Type:
-
-- New array with the same length.
-
-### Use Case:
-
-- Converting data formats
-- Updating objects in arrays
-
-### Behavior:
-
-- Does not mutate the original array.
-- Always returns a new array.
-- Can include `undefined` or `null` values if returned from callback.
-- Executes the callback once for each element.
-
 ---
 
 ## 2. `filter()`
@@ -68,34 +52,18 @@ const evens = nums.filter((n) => n % 2 === 0);
 console.log(evens); // [2, 4]
 ```
 
-### Return Type:
-
-- New array with elements that match the condition.
-
-### Use Case:
-
-- Filtering valid items
-- Removing unwanted data
-
-### Behavior:
-
-- Does not mutate the original array.
-- Returns a new array.
-- Skips elements where the condition is false.
-- Callback must return a truthy value to include the element.
-
 ---
 
 ## 3. `reduce()`
 
 ### Purpose:
 
-Reduces an array to a **single value** by applying a function to each element (left to right).
+Reduces an array to a **single value**.
 
 ### Syntax:
 
 ```js
-array.reduce((accumulator, currentValue, index, array) => {
+array.reduce((accumulator, currentValue) => {
   return updatedAccumulator;
 }, initialValue);
 ```
@@ -107,23 +75,6 @@ const nums = [1, 2, 3, 4];
 const total = nums.reduce((sum, curr) => sum + curr, 0);
 console.log(total); // 10
 ```
-
-### Return Type:
-
-- Any single value (number, object, string, etc.)
-
-### Use Case:
-
-- Summing numbers
-- Grouping items
-- Creating objects from arrays
-
-### Behavior:
-
-- Does not mutate the original array.
-- Executes the reducer from left to right.
-- Requires an initial value; if omitted, uses first array element and starts from second.
-- Can return any data type.
 
 ### Advanced Combinations:
 
@@ -175,6 +126,140 @@ const unique = arr.reduce((acc, cur) => {
   if (!acc.includes(cur)) acc.push(cur);
   return acc;
 }, []); // [1, 2, 3]
+```
+
+---
+
+## 4. `flat()`
+
+### Purpose:
+
+Flattens nested arrays into a single-level array.
+
+### Example:
+
+```js
+const arr = [1, [2, [3]]];
+console.log(arr.flat(2)); // [1, 2, 3]
+```
+
+---
+
+## 5. `flatMap()`
+
+### Purpose:
+
+Maps each element and flattens the result into a new array.
+
+### Example:
+
+```js
+const arr = [1, 2, 3];
+console.log(arr.flatMap((n) => [n, n * 2])); // [1, 2, 2, 4, 3, 6]
+```
+
+---
+
+## 6. `Array.from()`
+
+### Purpose:
+
+Creates a new array instance from an array-like or iterable object.
+
+### Example:
+
+```js
+const str = "hello";
+console.log(Array.from(str)); // ['h', 'e', 'l', 'l', 'o']
+```
+
+---
+
+## 7. `slice()`
+
+### Purpose:
+
+Returns a shallow copy of a portion of an array.
+
+### Example:
+
+```js
+const arr = [1, 2, 3, 4];
+console.log(arr.slice(1, 3)); // [2, 3]
+```
+
+---
+
+## 8. `splice()`
+
+### Purpose:
+
+Changes contents of an array by removing or replacing elements.
+
+### Example:
+
+```js
+const arr = [1, 2, 3, 4];
+arr.splice(1, 2);
+console.log(arr); // [1, 4]
+```
+
+---
+
+## 9. `forEach()`
+
+### Purpose:
+
+Executes a function for each element in an array.
+
+### Example:
+
+```js
+[1, 2, 3].forEach((num) => console.log(num));
+```
+
+---
+
+## 10. `some()`
+
+### Purpose:
+
+Checks if **at least one** element satisfies the condition.
+
+### Example:
+
+```js
+const arr = [1, 2, 3];
+console.log(arr.some((n) => n > 2)); // true
+```
+
+---
+
+## 11. `every()`
+
+### Purpose:
+
+Checks if **all** elements satisfy the condition.
+
+### Example:
+
+```js
+const arr = [1, 2, 3];
+console.log(arr.every((n) => n > 0)); // true
+```
+
+---
+
+## Chaining Example
+
+```js
+const nums = [1, 2, 3, 4, 5];
+const result = nums
+  .filter((n) => n % 2 !== 0)
+  .map((n) => n * 10)
+  .reduce((a, b) => a + b, 0);
+
+console.log(result); // 90
 ```
 
 ---
